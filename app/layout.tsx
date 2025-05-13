@@ -6,9 +6,16 @@
 
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import type { Metadata } from "next";
-import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import "@/styles/globals.css"; 
+import { AppSidebar } from "@/components/app-sidebar"
+import { SiteHeader } from "@/components/site-header"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { ConvexClientProvider } from "./ConvexClientProvider"
+
+export const iframeHeight = "800px";
+
+export const descaription = "A sidebar with a header and a search from."
 
 /**
  * * Metadatos globales de la aplicación.
@@ -77,10 +84,19 @@ export default function RootLayout({ children }: RootLayoutProps): React.ReactEl
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+          <div className="[--header-height:calc(--spacing(14))]">
+            <SidebarProvider className="flex flex-col">
+              <SiteHeader />
+              <div className="flex flex-1">
+                <AppSidebar />
+                <SidebarInset className="flex-1">
+                  <ConvexClientProvider>
+                    <main className="flex-1">{children}</main>
+                    <Footer />
+                  </ConvexClientProvider>
+                </SidebarInset>
+              </div>
+            </SidebarProvider>
           </div>
         </ThemeProvider>
       </body>
