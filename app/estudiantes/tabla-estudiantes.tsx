@@ -28,7 +28,7 @@ export function TablaEstudiantes() {
     }
 
     const handleCrearEstudiante = () => {
-        router.push(`/estudiantes/crear`)
+        router.push(`/estudiantes/create`)
     }
 
     return (
