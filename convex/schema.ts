@@ -20,5 +20,8 @@ export default defineSchema({
         numSalon: v.string(),
         edificio: v.string(),
         planta: v.string()
+    }),
+    horarios: defineTable({
+        periodo: v.string()
     })
 })
