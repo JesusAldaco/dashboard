@@ -11,6 +11,7 @@ export default function Home() {
     {name: "Materias", herf: "/materias"},
     {name: "Salones", href: "/salones"},
     {name: "Horarios", href: "/horarios"},
+    {name: "AG-Grid Example", href: "/aggrid"}
   ]
 
   return (
