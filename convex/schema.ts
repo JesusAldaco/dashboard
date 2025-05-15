@@ -11,5 +11,9 @@ export default defineSchema({
         numEmpleado: v.string(),
         nombre: v.string(),
         correo: v.string(),
+    }),
+    materias: defineTable({
+        identificador: v.string(),
+        nombreMateria: v.string()
     })
 })

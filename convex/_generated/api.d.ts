@@ -15,6 +15,7 @@ import type {
 } from "convex/server";
 import type * as estudiantes from "../estudiantes.js";
 import type * as maestros from "../maestros.js";
+import type * as materias from "../materias.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -27,6 +28,7 @@ import type * as maestros from "../maestros.js";
 declare const fullApi: ApiFromModules<{
   estudiantes: typeof estudiantes;
   maestros: typeof maestros;
+  materias: typeof materias;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
