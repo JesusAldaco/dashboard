@@ -15,5 +15,10 @@ export default defineSchema({
     materias: defineTable({
         identificador: v.string(),
         nombreMateria: v.string()
+    }),
+    salones: defineTable({
+        numSalon: v.string(),
+        edificio: v.string(),
+        planta: v.string()
     })
 })
