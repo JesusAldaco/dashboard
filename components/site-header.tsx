@@ -1,7 +1,8 @@
 "use client"
 
 import { SidebarIcon } from "lucide-react"
-
+import { useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { SearchForm } from "@/components/search-form"
 import {
   Breadcrumb,
@@ -15,9 +16,18 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { useSidebar } from "@/components/ui/sidebar"
 import { ThemeToggle } from "@/components/theme/theme-toggle"
+import { useBreadcrumbStore } from "@/store/breadcrumbStore"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
+  const items = useBreadcrumbStore(state => state.items)
+  const setBredcrumb = useBreadcrumbStore(state => state.setBreadcrum)
+  const pathname = usePathname()
+
+  // Actualizar el breadcrumb cuando cambia la ruta
+  useEffect(() =>{
+    setBredcrumb(pathname)
+  }, [pathname, setBredcrumb])
 
   return (
     <header className="bg-background sticky top-0 z-50 flex w-full items-center border-b">
@@ -33,15 +43,20 @@ export function SiteHeader() {
         <Separator orientation="vertical" className="mr-2 h-4" />
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Building Your Application
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-            </BreadcrumbItem>
+            {items.map((item, index) =>(
+              <BreadcrumbItem key={index}>
+                {item.isCurrentPage ?(
+                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                ):(
+                  <>
+                    <BreadcrumbLink href={item.href || '#'}>
+                      {item.label}
+                    </BreadcrumbLink>
+                    {index < items.length - 1 && <BreadcrumbSeparator />}
+                  </>
+                )}
+              </BreadcrumbItem>
+            ))}
           </BreadcrumbList>
         </Breadcrumb>
         <div className="justify-end flex-1 hidden sm:flex">

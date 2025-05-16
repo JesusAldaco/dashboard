@@ -23,5 +23,11 @@ export default defineSchema({
     }),
     horarios: defineTable({
         periodo: v.string()
+    }),
+    calificaciones: defineTable({
+        estudianteID: v.id("estudiantes"), // Referencia del ID del estudiante
+        materiaID: v.id("materias"), // Referencia del ID de la materia
+        nota: v.number(),
+        semestre: v.string()
     })
 })

@@ -8,10 +8,10 @@ export default function Home() {
   const sections = [
     {name: "Estudiantes", href: "/estudiantes"},
     {name: "Maestros", href: "/maestros"},
-    {name: "Materias", herf: "/materias"},
+    {name: "Materias", href: "/materias"},
     {name: "Salones", href: "/salones"},
     {name: "Horarios", href: "/horarios"},
-    {name: "AG-Grid Example", href: "/aggrid"}
+    {name: "Calificaciones", href: "/calificaciones"}
   ]
 
   return (

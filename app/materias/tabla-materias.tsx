@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
-import { useRouter } from "next/router" 
+import { useRouter } from "next/navigation" 
 
 export function TablaMaterias(){
     const router = useRouter()

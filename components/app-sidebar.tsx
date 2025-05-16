@@ -3,7 +3,11 @@
 import * as React from "react"
 import {
   BookOpen,
+  BookOpenCheck,
   Bot,
+  Building,
+  Building2,
+  Clock8,
   Command,
   LifeBuoy,
   School,
@@ -11,9 +15,7 @@ import {
   Timer,
   User,
 } from "lucide-react"
-
 import { NavMain } from "@/components/nav-main"
-// import { NavProjects } from "@/components/nav-projects"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
 import {
@@ -26,123 +28,139 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
-    {
-      title: "Estudiantes",
-      url: "/estudiantes",
-      icon: User,
-      isActive: true,
-      items:[
-        {
-          title: "Ver",
-          url: "/estudiantes"
-        },
-        {
-          title: "Crear",
-          url: "/estudiantes/create"
-        }
-      ]
-    },
-    {
-      title: "Maestros",
-      url: "/maestros",
-      icon: Bot,
-      items:[
-        {
-          title: "Ver",
-          url: "/maestros"
-        },
-        {
-          title: "Crear",
-          url: "/maestros/create"
-        }
-      ]
-    },
-    {
-      title: "Materias",
-      url: "/materias",
-      icon: BookOpen,
-      items:[
-        {
-          title: "Ver",
-          url: "/materias"
-        },
-        {
-          title: "Crear",
-          url: "/materias/create"
-        }
-      ]
-    },
-    {
-      title: "Salones",
-      url: "/salones",
-      icon: School,
-      items:[
-        {
-          title: "Ver",
-          url: "/salones"
-        },
-        {
-          title: "Crear",
-          url: "/salones/create"
-        }
-      ]
-    },
-    {
-      title: "Horarios",
-      url: "/horarios",
-      icon: Timer,
-      items:[
-        {
-          title: "Ver",
-          url: "/horarios"
-        },
-        {
-          title: "Crear",
-          url: "/horarios/create"
-        }
-      ]
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  // projects: [
-  //   {
-  //     name: "Design Engineering",
-  //     url: "#",
-  //     icon: Frame,
-  //   },
-  //   {
-  //     name: "Sales & Marketing",
-  //     url: "#",
-  //     icon: PieChart,
-  //   },
-  //   {
-  //     name: "Travel",
-  //     url: "#",
-  //     icon: Map,
-  //   },
-  // ],
-}
+import { Button } from "./ui/button"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const data = {
+    user: {
+      name: "shadcn",
+      email: "m@example.com",
+      avatar: "/avatars/shadcn.jpg",
+    },
+    navMain: [
+      {
+        title: "Estudiantes",
+        url: "/estudiantes",
+        icon: User,
+        isActive: true,
+        items:[
+          {
+            title: "Ver",
+            url: "/estudiantes"
+          },
+          {
+            title: "Crear",
+            url: "/estudiantes/create"
+          }
+        ]
+      },
+      {
+        title: "Maestros",
+        url: "/maestros",
+        icon: User,
+        items:[
+          {
+            title: "Ver",
+            url: "/maestros"
+          },
+          {
+            title: "Crear",
+            url: "/maestros/create"
+          }
+        ]
+      },
+      {
+        title: "Materias",
+        url: "/materias",
+        icon: BookOpen,
+        items:[
+          {
+            title: "Ver",
+            url: "/materias"
+          },
+          {
+            title: "Crear",
+            url: "/materias/create"
+          }
+        ]
+      },
+      {
+        title: "Salones",
+        url: "/salones",
+        icon: Building2,
+        items:[
+          {
+            title: "Ver",
+            url: "/salones"
+          },
+          {
+            title: "Crear",
+            url: "/salones/create"
+          }
+        ]
+      },
+      {
+        title: "Horarios",
+        url: "/horarios",
+        icon: Clock8,
+        items:[
+          {
+            title: "Ver",
+            url: "/horarios"
+          },
+          {
+            title: "Crear",
+            url: "/horarios/create"
+          }
+        ]
+      },
+      {
+        title: "Calificaciones",
+        url: "/calificaciones",
+        icon: BookOpenCheck,
+        items:[
+          {
+            title: "Ver",
+            url: "/calificaciones"
+          },
+          {
+            title: "Crear",
+            url: "/calificaciones/create"
+          }
+        ]
+      },
+    ],
+    navSecondary: [
+      {
+        title: "Support",
+        url: "#",
+        icon: LifeBuoy,
+      },
+      {
+        title: "Feedback",
+        url: "#",
+        icon: Send,
+      },
+    ],
+    // projects: [
+    //   {
+    //     name: "Design Engineering",
+    //     url: "#",
+    //     icon: Frame,
+    //   },
+    //   {
+    //     name: "Sales & Marketing",
+    //     url: "#",
+    //     icon: PieChart,
+    //   },
+    //   {
+    //     name: "Travel",
+    //     url: "#",
+    //     icon: Map,
+    //   },
+    // ],
+  }
+
   return (
     <Sidebar
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
@@ -158,7 +176,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">Mi escuela</span>
-                  <span className="truncate text-xs">Sistema</span>
+                  <span className="truncate text-xs">Enterprice</span>
                 </div>
               </Link>
             </SidebarMenuButton>
