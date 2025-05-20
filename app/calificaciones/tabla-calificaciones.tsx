@@ -5,7 +5,7 @@ import { api } from "@/convex/_generated/api"
 import { Button } from "@/components/ui/button"
 import { Plus, Trash2, Edit } from "lucide-react"
 import { useRouter } from "next/navigation"
-import React, { useMemo, useState, useEffect } from "react"
+import React, { useMemo, useState, useEffect, useCallback } from "react"
 import { AgGridReact } from "ag-grid-react"
 import { ColDef, ICellRendererParams, ModuleRegistry, AllCommunityModule, RowSelectionOptions } from "ag-grid-community"
 import { Id } from "@/convex/_generated/dataModel"
@@ -136,7 +136,7 @@ export function TablaCalificaciones(){
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchData = async () => {
+  const fetchData = useCallback( async () => {
     setIsLoading(true)
     try{
       const data = await convex.query(api.calificaciones.obtenerCalificaciones)
@@ -148,13 +148,13 @@ export function TablaCalificaciones(){
     }finally{
       setIsLoading(false)
     }
-  }
+  }, [convex])
 
   useEffect(() =>{
     if (convex){
       fetchData()
     }
-  })
+  }, [convex, fetchData])
 
   // Definición de columna para AG Grid
   const columnDefs = useMemo<ColDef<Calificacion>[]>(() => [

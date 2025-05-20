@@ -20,48 +20,48 @@ const routeMap: Record<string, BreadcrumbItem[]> = {
         { label: 'Inicio', href: '/', isCurrentPage: true }
     ],
     '/maestros': [
-        { label: 'Inicio', href: '/' },
+        // { label: 'Inicio', href: '/' },
         { label: 'Maestros', href: '/maestros', isCurrentPage: true }
     ],
     '/maestros/create': [
-        { label: 'Inicio', href: '/' },
-        { label: 'Maestros', href: '/maestros' },
+        // { label: 'Inicio', href: '/' },
+        // { label: 'Maestros', href: '/maestros' },
         { label: 'Crear', isCurrentPage: true }
     ],
     '/estudiantes': [
-        { label: 'Inicio', href: '/' },
+        // { label: 'Inicio', href: '/' },
         { label: 'Estudiantes', href: '/estudiantes', isCurrentPage: true }
     ],
     '/estudiantes/create': [
-        { label: 'Inicio', href: '/' },
-        { label: 'Estudiantes', href: '/estudiantes' },
+        // { label: 'Inicio', href: '/' },
+        // { label: 'Estudiantes', href: '/estudiantes' },
         { label: 'Crear', isCurrentPage: true }
     ],
     '/materias': [
-        { label: 'Inicio', href: '/' },
+        // { label: 'Inicio', href: '/' },
         { label: 'Materias', href: '/materias', isCurrentPage: true }
     ],
     '/materias/create': [
-        { label: 'Inicio', href: '/' },
-        { label: 'Materias', href: '/materias' },
+        // { label: 'Inicio', href: '/' },
+        // { label: 'Materias', href: '/materias' },
         { label: 'Crear', isCurrentPage: true }
     ],
     '/salones': [
-        { label: 'Inicio', href: '/' },
+        // { label: 'Inicio', href: '/' },
         { label: 'Salones', href: '/Salones', isCurrentPage: true }
     ],
     '/salones/create': [
-        { label: 'Inicio', href: '/' },
-        { label: 'Salones', href: '/salones' },
+        // { label: 'Inicio', href: '/' },
+        // { label: 'Salones', href: '/salones' },
         { label: 'Crear', isCurrentPage: true }
     ],
     '/horarios': [
-        { label: 'Inicio', href: '/' },
+        // { label: 'Inicio', href: '/' },
         { label: 'Horarios', href: '/horarios', isCurrentPage: true }
     ],
     '/horarios/create': [
-        { label: 'Inicio', href: '/' },
-        { label: 'Horarios', href: '/horarios' },
+        // { label: 'Inicio', href: '/' },
+        // { label: 'Horarios', href: '/horarios' },
         { label: 'Crear', isCurrentPage: true }
     ],
 }
@@ -79,7 +79,7 @@ export const useBreadcrumbStore = create(
                     // Si no exsite creamos un breadcrumb básico
                     const pathSegment = path.split('/').filter(Boolean)
                     const breadcrumbItems: BreadcrumbItem[] = [
-                        { label: 'Inicio', href: '/' }
+                        { label: 'Inicio', href: '/', isCurrentPage: true }
                     ]
 
                     let currentPath = ''
