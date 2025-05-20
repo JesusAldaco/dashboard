@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useMemo, useRef } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-import { GridReadyEvent, ModuleRegistry, ColDef, GridApi, ICellRendererParams, ClientSideRowModelModule, provideGlobalGridOptions, RowApiModule, RowSelectionModule, TextFilterModule, NumberFilterModule } from 'ag-grid-community'
+import { GridReadyEvent, ModuleRegistry, ColDef, GridApi, ICellRendererParams, ClientSideRowModelModule, RowSelectionModule, TextFilterModule, NumberFilterModule } from 'ag-grid-community'
 // import 'ag-grid-community/styles/ag-grid.css'
 // import 'ag-grid-community/styles/ag-theme-alpine.css'
 
@@ -14,7 +14,7 @@ interface RowData{
     name: string,
     age: number,
     city: string,
-    [key: string]: any
+    // [key: string]: any
 }
 
 const MyAgGridTable = () => {

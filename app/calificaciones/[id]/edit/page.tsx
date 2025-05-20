@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, use, useReducer } from "react"
+import { useState, useEffect, use } from "react"
 import { useQuery, useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
@@ -11,7 +11,6 @@ import { Input } from "@/components/ui/input"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,

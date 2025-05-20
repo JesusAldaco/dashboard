@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { fetchQuery } from "convex/nextjs"
+// import { fetchQuery } from "convex/nextjs"
 
 // Registrar los modulos de AG Grid
 ModuleRegistry.registerModules([AllCommunityModule])

@@ -20,7 +20,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { useSidebarStore } from "@/store/sidebarstore"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 type NavItem ={
   title: string

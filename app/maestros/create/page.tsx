@@ -10,12 +10,11 @@ import { Label } from "@/components/ui/label"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { ArrowLeft, Router } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 
 export default function CrearMaestroPage () {
     const router = useRouter()

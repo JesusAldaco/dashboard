@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -21,11 +20,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { ArrowLeft, Pencil, Trash2 } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
-import { tree } from "next/dist/build/templates/app-page"
+// import { tree } from "next/dist/build/templates/app-page"
 
 export default function DetalleCalificacionPage({params}:{params:Promise<{ id: string }>}){
   const { id } = use(params)

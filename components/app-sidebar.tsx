@@ -4,15 +4,11 @@ import * as React from "react"
 import {
   BookOpen,
   BookOpenCheck,
-  Bot,
-  Building,
   Building2,
   Clock8,
   Command,
   LifeBuoy,
-  School,
   Send,
-  Timer,
   User,
 } from "lucide-react"
 import { NavMain } from "@/components/nav-main"
@@ -28,7 +24,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { Button } from "./ui/button"
+// import { Button } from "./ui/button"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const data = {
