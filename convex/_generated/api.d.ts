@@ -13,6 +13,7 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as calificaciones from "../calificaciones.js";
 import type * as estudiantes from "../estudiantes.js";
 import type * as horarios from "../horarios.js";
 import type * as maestros from "../maestros.js";
@@ -28,6 +29,7 @@ import type * as salones from "../salones.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  calificaciones: typeof calificaciones;
   estudiantes: typeof estudiantes;
   horarios: typeof horarios;
   maestros: typeof maestros;

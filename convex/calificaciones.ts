@@ -60,7 +60,7 @@ export const obtenerCalificacionesByID = query({
 })
 
 // Mutación para crear una nueva calificación
-export const crearCalificación = mutation({
+export const crearCalificacion = mutation({
   args:{
     estudianteID: v.id("estudiantes"),
     materiaID: v.id("materias"),
@@ -96,7 +96,7 @@ export const crearCalificación = mutation({
 })
 
 // Mutación para actualizar una calificación existente
-export const actualizarCalificación = mutation({
+export const actualizarCalificacion = mutation({
   args:{
     id: v.id("calificaciones"),
     estudianteID: v.id("estudiantes"),
