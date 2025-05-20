@@ -154,7 +154,7 @@ export function TablaCalificaciones(){
     if (convex){
       fetchData()
     }
-  }, [convex])
+  })
 
   // Definición de columna para AG Grid
   const columnDefs = useMemo<ColDef<Calificacion>[]>(() => [
