@@ -3,7 +3,6 @@
 import { use, useState } from "react"
 import { useMutation, useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import { Id } from "@/convex/_generated/dataModel"
 import { useRouter } from "next/navigation"
 import { ArrowLeft, Pencil, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -25,10 +24,10 @@ import {
 } from "@/components/ui/dialog"
 
 export default function DetalleEstudiantePage({ params }:{ params: Promise<{ id: string }> }){
-    const { id } = use(params)
-    const idEstudiante = id as Id<"estudiantes">
+    const resolvedParams = use(params)
+    const { id: numMatricula} = resolvedParams
     const router = useRouter()
-    const estudiante = useQuery(api.estudiantes.obtenerEstudiantePorId, { id: idEstudiante })
+    const estudiante = useQuery(api.estudiantes.obtenerEstudiantePorId, { numMatricula })
     const eliminarEstudiante = useMutation(api.estudiantes.eliminarEstudiante)
     
     const [modalEliminar, setModalEliminar] = useState(false)
@@ -80,14 +79,20 @@ export default function DetalleEstudiantePage({ params }:{ params: Promise<{ id:
     }
 
     const handlerEditar = ( ) => {
-        router.push(`/estudiantes/${id}/editar`)
+        router.push(`/estudiantes/${numMatricula}/editar`)
     }
 
     const handlerEliminar = async () => {
         setIsSubmitting(true)
         try{
-            await eliminarEstudiante({ id: estudiante._id })
-            router.push('/estudiantes')
+            // await eliminarEstudiante({ id: estudiante._id })
+            // router.push('/estudiantes')
+            if( estudiante?._id ){
+                 await eliminarEstudiante({ id: estudiante._id })
+                router.push('/estudiantes')
+            }else{
+                console.error("No se encontro el _id del estudiante ha eliminar")
+            }
         }catch (error) {
             console.error("Error al eliminar el estudiante:", error)
         }finally {

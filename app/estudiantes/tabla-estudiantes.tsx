@@ -75,8 +75,8 @@ export function TablaEstudiantes() {
       return <div>Cargando información</div>
   }
 
-  const handleVerEstudiante = (id: string) => {
-      router.push(`/estudiantes/${id}`)
+  const handleVerEstudiante = (estudiante: {id: string; numMatricula: string}) => {
+      router.push(`/estudiantes/${estudiante.numMatricula}`)
   }
 
   const handleCrearEstudiante = () => {
@@ -132,7 +132,7 @@ export function TablaEstudiantes() {
                         </TableCell>
                         <TableCell
                           className='font-medium cursor-pointer'
-                          onClick={() => handleVerEstudiante(estudiante._id)}
+                          onClick={() => handleVerEstudiante(estudiante)}
                         >
                           {estudiante.numMatricula}
                         </TableCell>

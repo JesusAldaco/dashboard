@@ -3,7 +3,6 @@
 import { use, useState, useEffect } from "react"
 import { useMutation, useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import { Id } from "@/convex/_generated/dataModel"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,10 +18,10 @@ import { ArrowLeft, Save } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export default function EditarEstudiantePage({ params } : { params: Promise<{ id: string}> } ){
-    const { id } = use(params)
-    const idEstudiante = id as Id<"estudiantes">
+    const resolvedParams = use(params)
+    const { id: numMatricula } = resolvedParams
     const router = useRouter()
-    const estudiante = useQuery(api.estudiantes.obtenerEstudiantePorId, { id: idEstudiante })
+    const estudiante = useQuery(api.estudiantes.obtenerEstudiantePorId, { numMatricula })
     const actualizarEstudiante = useMutation(api.estudiantes.actualizarEstudiante)
 
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -103,7 +102,7 @@ export default function EditarEstudiantePage({ params } : { params: Promise<{ id
                 id: estudiante._id,
                 ... fromData
             })
-            router.push(`/estudiantes/${id}`)
+            router.push(`/estudiantes/${numMatricula}`)
         } catch (error) {
             console.error("Error al actualizar el estudiante:", error)
         } finally {

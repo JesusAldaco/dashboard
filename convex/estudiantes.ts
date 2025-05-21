@@ -9,10 +9,21 @@ export const obtenerEstudiantes = query({
 })
 
 // Consulta para obtener un estudiante por su ID
+// export const obtenerEstudiantePorId = query({
+//     args: { id: v.id("estudiantes") },
+//     handler: async (ctx, args) => {
+//         return await ctx.db.get(args.id);
+//     },
+// })
+
 export const obtenerEstudiantePorId = query({
-    args: { id: v.id("estudiantes") },
+    args: { numMatricula: v.string() },
     handler: async (ctx, args) => {
-        return await ctx.db.get(args.id);
+        const estudiante = await ctx.db
+            .query("estudiantes")
+            .filter((q) => q.eq(q.field("numMatricula"), args.numMatricula))
+            .first()
+        return estudiante
     },
 })
 
