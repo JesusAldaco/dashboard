@@ -241,7 +241,7 @@ function ResetPasswordContent(){
             autoComplete="new-password"
           />
         </div>
-        <Button type='submit' disabled={isSignInLoaded} className="w-full">
+        <Button type='submit' disabled={isSubmiting || !isSignInLoaded} className="w-full">
           {isSignInLoaded ? 'Procesando...' : 'Cambiar contraseña'}
         </Button>
       </form>
