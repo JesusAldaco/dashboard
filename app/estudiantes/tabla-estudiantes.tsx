@@ -132,7 +132,7 @@ export function TablaEstudiantes() {
                         </TableCell>
                         <TableCell
                           className='font-medium cursor-pointer'
-                          onClick={() => handleVerEstudiante(estudiante)}
+                          onClick={() => handleVerEstudiante({ id: estudiante._id, numMatricula: estudiante.numMatricula } /*estudiante*/)}
                         >
                           {estudiante.numMatricula}
                         </TableCell>

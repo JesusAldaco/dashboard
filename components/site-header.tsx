@@ -17,6 +17,7 @@ import { Separator } from "@/components/ui/separator"
 import { useSidebar } from "@/components/ui/sidebar"
 import { ThemeToggle } from "@/components/theme/theme-toggle"
 import { useBreadcrumbStore } from "@/store/breadcrumbStore"
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
@@ -63,6 +64,17 @@ export function SiteHeader() {
           <ThemeToggle />
         </div>
         <SearchForm className="w-full sm:ml-auto sm:w-auto" />
+        <SignedOut>
+          <SignInButton>
+            <Button>Sing in</Button>
+          </SignInButton>
+          <SignUpButton>
+            <Button variant="secondary">Sign up</Button>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </header>
   )

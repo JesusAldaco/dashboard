@@ -29,5 +29,16 @@ export default defineSchema({
         materiaID: v.id("materias"), // Referencia del ID de la materia
         nota: v.number(),
         semestre: v.string()
+    }),
+    /* --Tabla de usuarios-- */
+    usuarios: defineTable({
+        clerkId: v.string(), // ID de Clerk
+        nombre: v.string(),
+        email: v.string(),
+        estado: v.union(v.literal("activo"), v.literal("bloqueado")), // Estado del usuario
+        fechaCreacion: v.number(), // Timestamp de creación
+        role: v.string(), // Nuevo campo para el rol del usuario (ej. "admin", "user")
     })
+    .index("by_clerkId", ["clerkId"])
+    .index("by_email", ["email"])
 })
