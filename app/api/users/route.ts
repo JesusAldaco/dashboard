@@ -67,7 +67,7 @@ export async function POST( request: Request ) {
 
     /* Enviar correo por Resend con la contraseña y el enlace de inicio de sesión 
        o un enlace a página donde pueda cambiarla ( si eligen hacerlo) */
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL // || 'http://localhost:3000'
     /* El enlace ya np es para -reset-password- de Clerk, sino una página de inicio de secion o un dashboard
        Opcionalmente, podría apuntar a una página personalizada como -/initial-setup- donde el usuario podria cambiar la contraseña*/
     const loginURL = `${baseURL}/sign-in` // Página de inicio de sesión estandar de Clerk
