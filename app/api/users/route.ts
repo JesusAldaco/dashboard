@@ -66,13 +66,8 @@ export async function POST( request: Request ) {
       throw convexError;
     }
 
-    /* Enviar correo por Resend con la contraseña y el enlace de inicio de sesión 
-       o un enlace a página donde pueda cambiarla ( si eligen hacerlo) */
     const baseURL = process.env.NEXT_PUBLIC_BASE_URL // || 'http://localhost:3000'
-    /* El enlace ya np es para -reset-password- de Clerk, sino una página de inicio de secion o un dashboard
-       Opcionalmente, podría apuntar a una página personalizada como -/initial-setup- donde el usuario podria cambiar la contraseña*/
     const loginURL = `${baseURL}/sign-in` // Página de inicio de sesión estandar de Clerk
-    // const changePasswordURL = `${baseURL}/change-password` // Una pagina personalizada para cambiar la contraseña
 
     if (!process.env.RESEND_FROM_EMAIL) {
       console.error('RESEND_FROM_EMAIL no está definido en las variables de entorno.')
@@ -91,6 +86,7 @@ export async function POST( request: Request ) {
       )
     }
 
+    try{
     const { data: emailResponse, error: emailError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to: email,
@@ -126,6 +122,9 @@ export async function POST( request: Request ) {
       convexUserId: userId,//convexResult.userId,
       emailId: emailResponse//emailResult?.id
     })
+    } catch (err){
+      return Response.json({err},{status: 500})
+    }
 
   } catch (error: unknown) {
     console.error('Full error creating user:', error)
