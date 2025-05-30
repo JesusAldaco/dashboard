@@ -29,6 +29,7 @@ export async function POST( request: Request ) {
     })
 
     if ( existingUser.data.length > 0 ){
+      console.error('Se requieren mas de 8 caracteres')
       return NextResponse.json(
         { success: false, error: 'El correo electrónico ya está en uso.' },
         { status: 400 }
@@ -83,6 +84,7 @@ export async function POST( request: Request ) {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
+      console.error('correo proporcionado es inválido.')
       return NextResponse.json(
         { success: false, error: 'El correo electrónico proporcionado no es válido.' },
         { status: 400 }
