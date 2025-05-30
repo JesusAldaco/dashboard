@@ -73,6 +73,22 @@ export async function POST( request: Request ) {
     const loginURL = `${baseURL}/sign-in` // Página de inicio de sesión estandar de Clerk
     // const changePasswordURL = `${baseURL}/change-password` // Una pagina personalizada para cambiar la contraseña
 
+    if (!process.env.RESEND_FROM_EMAIL) {
+      console.error('RESEND_FROM_EMAIL no está definido en las variables de entorno.')
+      return NextResponse.json(
+        { success: false, error: 'Error de configuración del correo.' },
+        { status: 500 }
+      )
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: 'El correo electrónico proporcionado no es válido.' },
+        { status: 400 }
+      )
+    }
+
     const { data: emailResponse, error: emailError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to: email,
