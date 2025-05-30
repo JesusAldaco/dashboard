@@ -206,7 +206,7 @@ export default function UsuariosPage(){
 
     if (confirm(`¿Estas seguro de que quieres ${accion} a este usuario (${userToUpdate.nombre})?`)) {
       try {
-        const response = await fetch('/api/user', {
+        const response = await fetch('/api/users', {
           method: 'PATCH',
           headers:{
             'Content-Type': 'application/json'
