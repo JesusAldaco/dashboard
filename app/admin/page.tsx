@@ -247,7 +247,7 @@ export default function UsuariosPage(){
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            clerkId: userToDelete.clerkId,
+            clerkUserId: userToDelete.clerkId,
             convexUserId: userToDelete._id
           })
         })
