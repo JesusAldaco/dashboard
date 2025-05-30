@@ -7,7 +7,7 @@ import { fetchMutation } from 'convex/nextjs'
 import { api } from '@/convex/_generated/api'
 // import { patchFetch } from 'next/dist/server/app-render/entry-base'
 
-const clerk = createClerkClient({ secretKey: process.env.CLERK_API_KEY! })
+const clerk = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY! })
 const resend = new Resend(process.env.RESEND_API_KEY!)
 
 export async function POST( request: Request ) {
