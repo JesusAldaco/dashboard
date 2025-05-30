@@ -241,7 +241,7 @@ export default function UsuariosPage(){
   const handleDeleteUser = async (userToDelete: Usuario) => {
     if (confirm(`¿Esta seguro de que quiere eliminar este usuario (${userToDelete.nombre})? Esta acción es irreversible y lo eliminara de Clerk y Convex`)){
       try {
-        const response = await fetch('/api/user', {
+        const response = await fetch('/api/users', {
           method: 'DELETE',
           headers:{
             'Content-Type': 'application/json'
