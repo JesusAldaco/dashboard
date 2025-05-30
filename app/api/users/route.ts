@@ -45,12 +45,25 @@ export async function POST( request: Request ) {
     })
 
     // Almacenar el usuario en Convex
-    const userId = await fetchMutation(api.functions.user.createUser, {
-      clerkId: clerkUser.id,
-      nombre,
-      email,
-      role, // Asignar el rol proporcionado
-    })
+    // const userId = await fetchMutation(api.functions.user.createUser, {
+    //   clerkId: clerkUser.id,
+    //   nombre,
+    //   email,
+    //   role, // Asignar el rol proporcionado
+    // })
+    let userId;
+    try {
+      userId = await fetchMutation(api.functions.user.createUser, {
+        clerkId: clerkUser.id,
+        nombre,
+        email,
+        role,
+      });
+      console.log("Usuario creado en Convex:", userId);
+    } catch (convexError) {
+      console.error("Error al crear usuario en Convex:", convexError);
+      throw convexError;
+    }
 
     /* Enviar correo por Resend con la contraseña y el enlace de inicio de sesión 
        o un enlace a página donde pueda cambiarla ( si eligen hacerlo) */
