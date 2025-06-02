@@ -88,7 +88,7 @@ export async function POST( request: Request ) {
 
     try{
     const { data: emailResponse, error: emailError } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL!,
+      from: "Aviso <https://jesus.korian-labs.net>",
       to: email,
       subject: '¡Bienevenido! tus credenciales de acceso',
       html: `
