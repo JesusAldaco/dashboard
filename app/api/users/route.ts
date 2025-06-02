@@ -226,7 +226,6 @@ export async function PATCH(request: Request) {
           emailAddress: email
         })
         newEmailCreatedId = newEmailObject.id // Guarda el ID en caso de fallo
-        // newEmailAddressToSet = newEmailObject.emailAddress // Guarda la dirección
 
         // Marcar como primaria y verificada inmediatamente (para admin)
         await clerk.emailAddresses.updateEmailAddress(newEmailObject.id,{
@@ -245,13 +244,11 @@ export async function PATCH(request: Request) {
     if (role !== undefined){
       updatesConvex.role = role
       // Al usar roles publicos de Clerk, también se actualizaran aquí
-      // await clerk.users.updateUser(clerkId, { publicMetadata: {role: role} })
     }
     // Manejar actualización de Estado (bloquear/desbloquear) - Solo en Convex si Clerk no maneja estado directamente
     if (estado !== undefined){
       updatesConvex.estado = estado
       // Si Clerk no tiene un campo de suspendido o similar, podria ser actualizado aquí
-      // await clerk.users.updateUser(clerkId, { publicMetadata: {estado: estado} })
     }
     // Realizar actualización en Clerk, si hay algo que actualizar
     if (Object.keys(updatesClerk).length > 0){
@@ -299,12 +296,6 @@ export async function PATCH(request: Request) {
         }
       }
     }
-    /*
-    RollBack para el correo (si se creó un nuvo email en Clerk pero falló algo después).
-    Esto es muy complejo de hacer de forma robusta sin webshooks de Clerk o un sistema de colas.
-    Por ahora, se asume que los errores en Clerk son detectados y manejados inmediatamente.
-    Si la actualización en Convex falla después de Clerk, el estado sera inconsistente.
-    */
     return NextResponse.json(
       { success: false, error: message, clerkTraceId },
       { status }
